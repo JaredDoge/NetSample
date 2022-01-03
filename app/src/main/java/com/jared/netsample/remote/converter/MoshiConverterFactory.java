@@ -70,7 +70,6 @@ public final class MoshiConverterFactory extends Converter.Factory {
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(
             Type type, Annotation[] annotations, Retrofit retrofit) {
-
         return new MoshiResponseBodyConverter<>(moshi,type,annotations,lenient,failOnUnknown,serializeNulls);
     }
 

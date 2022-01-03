@@ -39,7 +39,7 @@ import java.lang.reflect.Type
  * failure:
  * {
  *      "status": "1x052",
- *      "message": "請求失敗，",
+ *      "message": "請求失敗",
  *      "errors":{
  *         "id":5
  *      }
@@ -49,7 +49,8 @@ import java.lang.reflect.Type
  *
  */
 @Suppress("UNCHECKED_CAST")
-internal class MoshiResponseBodyConverter<T>(
+internal class MoshiResponseBodyConverter<T>
+(
     private val moshi: Moshi,
     private val type: Type,
     private val ann: Array<Annotation>,
