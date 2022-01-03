@@ -25,7 +25,7 @@ import java.util.Set;
  *  Moshi.Builder()
  *        .add(PolymorphicJsonAdapterFactory2.intTypeOf(Parent::class.java,"type")
           .withSubtype(Child::class.java, 1)
-          .withSubtype(Child::class.java, 2)
+          .withSubtype(Child::class.java, 2))
  * @param <T>
  * @param <V>
  */

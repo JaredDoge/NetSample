@@ -1,4 +1,4 @@
-package com.jared.netsample
+package com.jared.netsample.sample
 
 import com.jared.netsample.remote.converter.ann.ArrayError
 import com.jared.netsample.remote.converter.ann.ObjectError
@@ -12,19 +12,19 @@ interface Api {
 
 
     //如果server 回傳的data key是原始class(Int、String、Boolean之類的)也可以直接解析
-    @GET("macros/s/AKfycbwKs_gUmn2ZdzsOp8NwAS7z0_h7rjA9F_7xrzYMQQ8sranMv0O3MBhADaFxiIklGiTW/exec")
+    @GET("int")
     suspend fun getInt():Int
 
 
     //如果server 回傳的data key是原始class(Int、String、Boolean之類的)，並且有可能是null 或 沒有data 這個key
     //要在外面包一個Nullable<T>
-    @GET("macros/s/AKfycbwKs_gUmn2ZdzsOp8NwAS7z0_h7rjA9F_7xrzYMQQ8sranMv0O3MBhADaFxiIklGiTW/exec")
+    @GET("int/nullable")
     suspend fun getIntNullable(): Nullable<Int>
 
     //如果server 回傳的data key 並且有可能是null 或 沒有data 這個key
     //要在外面包一個Nullable<T>
     //jsonArray同理 ex:Nullable<List<Test>>
-    @GET("macros/s/AKfycbwKs_gUmn2ZdzsOp8NwAS7z0_h7rjA9F_7xrzYMQQ8sranMv0O3MBhADaFxiIklGiTW/exec")
+    @GET("json/nullable")
     suspend fun getJsonObjectNullable():Nullable<Test>
 
     //注意:
@@ -32,7 +32,7 @@ interface Api {
     //會報 解析錯誤-0x002
 
     //如果要用MyHeader的話 要包在最外層
-    @GET("macros/s/AKfycbwKs_gUmn2ZdzsOp8NwAS7z0_h7rjA9F_7xrzYMQQ8sranMv0O3MBhADaFxiIklGiTW/exec")
+    @GET("array/nullable/header")
     suspend fun getJsonArrayNullableWithHeader():MyHeader<Nullable<List<Test>>>
 
 
@@ -49,16 +49,16 @@ interface Api {
 
     //原始類型只需要標上註解，會自動解析
     @PrimitiveError(Float::class)
-    @GET("macros/s/AKfycbwKs_gUmn2ZdzsOp8NwAS7z0_h7rjA9F_7xrzYMQQ8sranMv0O3MBhADaFxiIklGiTW/exec")
+    @GET("error/pri")
     suspend fun getPrimitiveError(): MyHeader<Nullable<ArrayList<Test>>>
 
     @ObjectError(Test::class)
-    @GET("macros/s/AKfycbwKs_gUmn2ZdzsOp8NwAS7z0_h7rjA9F_7xrzYMQQ8sranMv0O3MBhADaFxiIklGiTW/exec")
+    @GET("error/obj")
     suspend fun getObjectError():MyHeader<Nullable<List<Test>>>
 
     //注意 這邊代表 回傳的errors是一個 List<Test>
     @ArrayError(Test::class)
-    @GET("macros/s/AKfycbwKs_gUmn2ZdzsOp8NwAS7z0_h7rjA9F_7xrzYMQQ8sranMv0O3MBhADaFxiIklGiTW/exec")
+    @GET("error/array")
     suspend fun getArrayError():MyHeader<Nullable<List<Test>>>
 
 

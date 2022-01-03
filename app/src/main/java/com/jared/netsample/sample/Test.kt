@@ -1,4 +1,4 @@
-package com.jared.netsample
+package com.jared.netsample.sample
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 // ↓這個一定要加 加在每個data class上面
 @JsonClass(generateAdapter = true)
 data class Test(
-    //↓這個也4，跟gson一樣
+    //↓這個也是，跟gson一樣
     @Json(name="test_string")
     val testString:String,
     @Json(name="test2")
@@ -15,11 +15,11 @@ data class Test(
 
     // ↓這個一定要加 加在每個data class上面
     @JsonClass(generateAdapter = true)
-    //如果shit這個key server有可能傳null的話 ，請加上 " ? "
+    //如果test_int這個key server有可能傳null的話 ，請加上 " ? "
     //如果沒有標nullable server又傳null的話，會報錯
     data class Test2(
-        @Json(name="shit")
-        val shit:Int?
+        @Json(name="test_int")
+        val testInt:Int?
         )
 
 }
